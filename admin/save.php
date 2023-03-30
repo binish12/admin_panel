@@ -189,6 +189,37 @@ if ($cat == "workout" || $cat_get == "workout") {
 
 
 
+
+if ($cat == "notices" || $cat_get == "notices") {
+	$title = addslashes(htmlentities($_POST["title"], ENT_QUOTES));
+	$description = addslashes(htmlentities($_POST["description"], ENT_QUOTES));
+	$expiry_date = addslashes(htmlentities($_POST["expiry_date"], ENT_QUOTES));
+
+
+	$result = "";
+	if ($act == "add") {
+		mysqli_query($link, "INSERT INTO `notices` (  `title` , `description` , `expiry_date`  ) VALUES ( '" . $title . "' , '" . $description . "' , '" . $expiry_date . "' ) ");
+		
+
+		$result = "Success";
+		
+	} elseif ($act == "edit") {
+		mysqli_query($link, "UPDATE `notices` SET  `title` =  '" . $title . "' , `description` =  '" . $description . "' , `expiry_date` =  '" . $expiry_date . "' WHERE `id` = '" . $id . "'   ");
+		$result = "Success";
+	} elseif ($act_get == "delete") {
+		try {
+			mysqli_query($link, "DELETE FROM `notices` WHERE id = '" . $id_get . "' ");
+			$result = "Success";
+
+		} catch (Exception $e) {
+			$result = "Failure";
+		}
+	}
+	header("location:" . "notices.php?$result");
+}
+
+
+
 if ($cat == "packages" || $cat_get == "packages") {
 	$package_name = addslashes(htmlentities($_POST["package_name"], ENT_QUOTES));
 	$description = addslashes(htmlentities($_POST["description"], ENT_QUOTES));

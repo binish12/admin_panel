@@ -103,6 +103,16 @@ include("includes/data.php");
 					</a>
 				</li>
 
+				<li class="list-group-item list-group-item-action">
+					<a href="notices.php" style="color:black;text-decoration:none;">
+						<img src="assets/profile.png" class="pull-left" height="20px" width="20px">
+						&nbsp;&nbsp;&nbsp; Notices</span>
+						<span class="badge bg-primary rounded-pill pull-right">
+							<?= counting("notices", "id") ?>
+						</span>
+					</a>
+				</li>
+
 				
 				<li class="list-group-item list-group-item-action">
 					<a href="logout.php" style="color:black;text-decoration:none;">
