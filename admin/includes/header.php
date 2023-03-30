@@ -94,11 +94,11 @@ include("includes/data.php");
 				</li>
 				
 				<li class="list-group-item list-group-item-action">
-					<a href="exercises.php" style="color:black;text-decoration:none;">
+					<a href="workout.php" style="color:black;text-decoration:none;">
 						<img src="assets/profile.png" class="pull-left" height="20px" width="20px">
-						&nbsp;&nbsp;&nbsp; Exercises</span>
+						&nbsp;&nbsp;&nbsp; Workout</span>
 						<span class="badge bg-primary rounded-pill pull-right">
-							<?= counting("exercises", "exercise_id") ?>
+							<?= counting("workout", "id") ?>
 						</span>
 					</a>
 				</li>

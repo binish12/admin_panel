@@ -159,32 +159,32 @@ if ($cat == "foods" || $cat_get == "foods") {
 
 
 
-if ($cat == "exercises" || $cat_get == "exercises") {
-	$exercise_name = addslashes(htmlentities($_POST["exercise_name"], ENT_QUOTES));
-	$sets = addslashes(htmlentities($_POST["sets"], ENT_QUOTES));
-	$reps = addslashes(htmlentities($_POST["reps"], ENT_QUOTES));
+if ($cat == "workout" || $cat_get == "workout") {
+	$name = addslashes(htmlentities($_POST["name"], ENT_QUOTES));
+	$file = addslashes(htmlentities($_POST["file"], ENT_QUOTES));
+	$type = addslashes(htmlentities($_POST["type"], ENT_QUOTES));
 
 
 	$result = "";
 	if ($act == "add") {
-		mysqli_query($link, "INSERT INTO `exercises` (  `exercise_name` , `sets` , `reps`  ) VALUES ( '" . $exercise_name . "' , '" . $sets . "' , '" . $reps . "' ) ");
+		mysqli_query($link, "INSERT INTO `workout` (  `name` , `file` , `type`  ) VALUES ( '" . $name . "' , '" . $file . "' , '" . $type . "' ) ");
 		
 
 		$result = "Success";
 		
 	} elseif ($act == "edit") {
-		mysqli_query($link, "UPDATE `exercises` SET  `exercise_name` =  '" . $exercise_name . "' , `sets` =  '" . $sets . "' , `reps` =  '" . $reps . "' WHERE `exercise_id` = '" . $id . "'   ");
+		mysqli_query($link, "UPDATE `workout` SET  `name` =  '" . $name . "' , `file` =  '" . $file . "' , `type` =  '" . $type . "' WHERE `id` = '" . $id . "'   ");
 		$result = "Success";
 	} elseif ($act_get == "delete") {
 		try {
-			mysqli_query($link, "DELETE FROM `exercises` WHERE exercise_id = '" . $id_get . "' ");
+			mysqli_query($link, "DELETE FROM `workout` WHERE id = '" . $id_get . "' ");
 			$result = "Success";
 
 		} catch (Exception $e) {
 			$result = "Failure";
 		}
 	}
-	header("location:" . "exercises.php?$result");
+	header("location:" . "workout.php?$result");
 }
 
 
