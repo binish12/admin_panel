@@ -80,6 +80,16 @@ include("includes/data.php");
 						</span>
 					</a>
 				</li>
+
+				<li class="list-group-item list-group-item-action">
+					<a href="banners.php" style="color:black;text-decoration:none;">
+						<img src="assets/ingredients.png" class="pull-left" height="20px" width="20px">
+						&nbsp;&nbsp;&nbsp; Banners</span>
+						<span class="badge bg-primary rounded-pill pull-right">
+							<?= counting("banners", "id") ?>
+						</span>
+					</a>
+				</li>
 				
 
 

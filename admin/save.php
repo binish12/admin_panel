@@ -159,33 +159,6 @@ if ($cat == "foods" || $cat_get == "foods") {
 
 
 
-if ($cat == "workout" || $cat_get == "workout") {
-	$name = addslashes(htmlentities($_POST["name"], ENT_QUOTES));
-	$file = addslashes(htmlentities($_POST["file"], ENT_QUOTES));
-	$type = addslashes(htmlentities($_POST["type"], ENT_QUOTES));
-
-
-	$result = "";
-	if ($act == "add") {
-		mysqli_query($link, "INSERT INTO `workout` (  `name` , `file` , `type`  ) VALUES ( '" . $name . "' , '" . $file . "' , '" . $type . "' ) ");
-		
-
-		$result = "Success";
-		
-	} elseif ($act == "edit") {
-		mysqli_query($link, "UPDATE `workout` SET  `name` =  '" . $name . "' , `file` =  '" . $file . "' , `type` =  '" . $type . "' WHERE `id` = '" . $id . "'   ");
-		$result = "Success";
-	} elseif ($act_get == "delete") {
-		try {
-			mysqli_query($link, "DELETE FROM `workout` WHERE id = '" . $id_get . "' ");
-			$result = "Success";
-
-		} catch (Exception $e) {
-			$result = "Failure";
-		}
-	}
-	header("location:" . "workout.php?$result");
-}
 
 
 
@@ -217,6 +190,52 @@ if ($cat == "notices" || $cat_get == "notices") {
 	}
 	header("location:" . "notices.php?$result");
 }
+
+
+if ($cat == "workout" || $cat_get == "workout") {
+	$result = "";
+	
+	 if ($act_get == "delete") {
+		try {
+			mysqli_query($link, "DELETE FROM `workout` WHERE id = '" . $id_get . "' ");
+			$result = "Success";
+
+		} catch (Exception $e) {
+			$result = "Failure";
+		}
+	}
+	header("location:" . "workout.php?$result");
+}
+
+	
+
+
+if ($cat == "banners" || $cat_get == "banners") {
+	$result = "";
+	
+	 if ($act_get == "delete") {
+		try {
+			mysqli_query($link, "DELETE FROM `banners` WHERE id = '" . $id_get . "' ");
+			$result = "Success";
+
+		} catch (Exception $e) {
+			$result = "Failure";
+		}
+	}
+	header("location:" . "banners.php?$result");
+}
+
+	
+
+
+
+
+
+
+
+
+
+
 
 
 

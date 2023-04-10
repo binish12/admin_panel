@@ -1,30 +1,27 @@
 <?php
 include("includes/connect.php");
 
-//get categories from the database
-$fileID = $_GET['id'];
-
- $file = "SELECT * from workout WHERE id = $fileID";
-    $result = mysqli_query($link, $file);
+ $query = "SELECT food_name,quantity,total_calories,carbohydrates,fats,protein from foods ";
+    $result = mysqli_query($link, $query);
     if ($result) {
         $data = [];
       
         while ($row = mysqli_fetch_assoc($result)) {
-            $data[] = $row['file'];
+            $data[] = $row;
          
         }
         echo json_encode(
             [
                 'success' => true,
                 'data' => $data,
-                'message' => "Workouts fetched successfully"
+                'message' => "Foods fetched successfully"
             ]
         );
     } else {
         echo json_encode(
             [
                 'success' => false,
-                'message' => 'Error fetching workouts'
+                'message' => 'Error fetching Notices'
             ]
         );
     }

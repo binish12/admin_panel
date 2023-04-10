@@ -45,8 +45,8 @@ if(isset($_POST['act'])){
         $id = $_POST['id'];
         $workout_name = $_POST['workout_name'];
         $type = $_POST['type'];
-        $pdf_name = $_POST['old_pdf_name'];
-        $pdf_path = $_POST['old_pdf_path'];
+        $pdf_name = '';
+        $pdf_path = '';
 
         // PDF update
         if ($_FILES["file"]["name"] != '') {
@@ -71,7 +71,7 @@ if(isset($_POST['act'])){
 
         // Update data in workout table
         $sql = "UPDATE workout SET name='$pdf_name', file='$pdf_path', type='$type', updated_at=NOW() WHERE id='$id'";
-        $result = mysqli_query($conn, $sql);
+        $result = mysqli_query($link, $sql);
 
         if($result){
             header('Location: workout.php?Success');
